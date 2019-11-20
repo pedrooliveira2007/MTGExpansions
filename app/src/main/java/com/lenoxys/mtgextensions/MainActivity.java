@@ -4,7 +4,7 @@ import android.os.Bundle;
 
 import com.google.gson.Gson;
 import com.lenoxys.mtgextensions.business.model.AllExpansion;
-import com.lenoxys.mtgextensions.business.model.Example;
+import com.lenoxys.mtgextensions.business.model.Data;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -17,6 +17,7 @@ import android.widget.TextView;
 import net.danlew.android.joda.JodaTimeAndroid;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.List;
 
 import okhttp3.Call;
@@ -54,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
         OkHttpClient client = new OkHttpClient();
 
         String url = "https://cdn.bigar.com/mtg/cardjson/expansions";
+        String urlbaseExpansion = "https://cdn.bigar.com/mtg/cardjson/expansions/";
 
         Request request;
         request = new Request.Builder().url(url).build();
@@ -71,15 +73,14 @@ public class MainActivity extends AppCompatActivity {
                     Log.d("PEDRO", myResponse);
 
                     //parsing the api into a class
-                    Example allExpansionsData = gson.fromJson(myResponse, Example.class);
+                    Data allExpansionsData = gson.fromJson(myResponse, Data.class);
 
                     //if class !null add all expansions into a list<AllExpansion>
                     if (allExpansionsData != null) {
 
-                        allExpansions = allExpansionsData.getData().getAllExpansions();
+                        allExpansions = allExpansionsData.getAllExpansions();
                         Log.d("PEDRO", myResponse);
 
-                        
 
                     } else {
 
@@ -87,15 +88,6 @@ public class MainActivity extends AppCompatActivity {
                     }
 
 
-
-//                    MainActivity.this.runOnUiThread(new Runnable() {
-//
-//
-//                        @Override
-//                        public void run() {
-//
-//                        }
-//                    });
 
                 }
 
@@ -134,4 +126,90 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
+    //return the Expansion name for the new window
+    public String GetExpansionNameById(String expansionId){
+
+        //default string for return(just for debug)
+        String str="Throne of Eldraine";
+
+        //get string from expansion object in AllExpansions array
+        for(int i=0; i<=allExpansions.size();i++ ){
+
+            if(allExpansions.get(i).getId() == expansionId){
+
+                str = allExpansions.get(i).getName();
+            }
+        }
+
+        return str;
+    }
 }
+
+//search where i need to put this to work with recycleList :thinking Emoji:
+/*
+ OkHttpClient expansionClient = new OkHttpClient();
+
+        String urlbaseExpansion = "https://cdn.bigar.com/mtg/cardjson/expansions/";
+
+        Request expansionRequest;
+        expansionRequest = new Request.Builder().url(urlbaseExpansion+GetExpansionNameById(expansionId)).build();
+
+        expansionClient.newCall(expansionRequest).enqueue(new Callback() {
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+
+                if (response.isSuccessful()) {
+
+                    //pass the api into a string
+                    String myResponse = response.body().string();
+                    //print the string at console
+                    Log.d("PEDRO", myResponse);
+
+                    //parsing the api into a class
+                    Root expansionData = gson.fromJson(myResponse, Root.class);
+
+                    if (expansionData != null) {
+
+                       String expansionName = expansionData.getData().getExpansion().getName();
+                       String expansionReleaseDate = expansionData.getData().getExpansion().getReleaseDate();
+                       Float  expansionCardCount = expansionData.getData().getExpansion().getCardCount();
+
+                      ArrayList<Object> expansionCards = expansionData.getData().getAllExpansionCards();
+
+                        Log.d("EXPANSION NAME : ", expansionName);
+                        Log.d("EXPANSION RELEASE DATE ", expansionReleaseDate);
+                        Log.d("EXPANSION CARD COUNT", expansionCardCount);
+
+                    } else {
+
+                        Log.e("ERROR", "ExpansionData is NULL");
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call call, IOException e) {
+
+                e.printStackTrace();
+
+            }
+        });
+
+
+       public String GetExpansionNameById(String expansionId){
+
+            //get string from expansion object in AllExpansions array
+           for(int i=0; i<=allExpansions.size();i++ ){
+
+                if(allExpansions.get(i).getId() == expansionId){
+
+                    return ((allExpansions.get(i).getName()) as String);
+                    }
+            }
+        }
+
+
+ */
