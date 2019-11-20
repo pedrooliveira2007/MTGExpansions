@@ -1,4 +1,4 @@
-package com.example.mtg_extensions_java_android.Business.Model;
+package com.lenoxys.mtgextensions.business.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 

@@ -1,4 +1,4 @@
-package com.example.mtg_extensions_java_android.Business.Model;
+package com.lenoxys.mtgextensions.business.model;
 
 import java.util.ArrayList;
 import java.util.List;
