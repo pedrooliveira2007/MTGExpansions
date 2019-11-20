@@ -88,7 +88,6 @@ public class MainActivity extends AppCompatActivity {
                     }
 
 
-
                 }
 
 
@@ -129,15 +128,15 @@ public class MainActivity extends AppCompatActivity {
 
 
     //return the Expansion name for the new window
-    public String GetExpansionNameById(String expansionId){
+    public String GetExpansionNameById(String expansionId) {
 
         //default string for return(just for debug)
-        String str="Throne of Eldraine";
+        String str = "Throne of Eldraine";
 
         //get string from expansion object in AllExpansions array
-        for(int i=0; i<=allExpansions.size();i++ ){
+        for (int i = 0; i <= allExpansions.size(); i++) {
 
-            if(allExpansions.get(i).getId() == expansionId){
+            if (allExpansions.get(i).getId() == expansionId) {
 
                 str = allExpansions.get(i).getName();
             }
