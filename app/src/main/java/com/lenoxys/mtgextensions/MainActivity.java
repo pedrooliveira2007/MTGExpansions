@@ -60,25 +60,34 @@ public class MainActivity extends AppCompatActivity {
 
         client.newCall(request).enqueue(new Callback() {
 
-            // review how to consume properly the API and how to put it inside the Data object.
-            // (give a look at this site https://www.geeksforgeeks.org/parse-json-java/).
             @Override
             public void onResponse(Call call, Response response) throws IOException {
 
                 if (response.isSuccessful()) {
 
+                    //pass the api into a string
                     String myResponse = response.body().string();
-//                    System.out.println(myResponse);
+                    //print the string at console
                     Log.d("PEDRO", myResponse);
 
+                    //parsing the api into a class
                     Example allExpansionsData = gson.fromJson(myResponse, Example.class);
 
+                    //if class !null add all expansions into a list<AllExpansion>
                     if (allExpansionsData != null) {
 
                         allExpansions = allExpansionsData.getData().getAllExpansions();
                         Log.d("PEDRO", myResponse);
 
+                        
+
+                    } else {
+
+                        Log.e("ERROR", "AllExpansionData is NULL");
                     }
+
+
+
 //                    MainActivity.this.runOnUiThread(new Runnable() {
 //
 //
