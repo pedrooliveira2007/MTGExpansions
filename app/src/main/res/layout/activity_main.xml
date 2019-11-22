@@ -3,13 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
-        android:layout_height="72dp"
+        android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
 
         <androidx.appcompat.widget.Toolbar
@@ -17,45 +16,16 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
-            app:layout_anchor="@+id/appBarLayout"
-            app:layout_anchorGravity="center"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include
-        android:id="@+id/include"
-        layout="@layout/content_main" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/redish"
-        android:orientation="vertical">
-
-    </LinearLayout>
-
-//https://www.youtube.com/watch?v=Nw9JF55LDzE
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="658dp"
-        android:background="@color/White"
-        android:padding="4dp"
-
-        app:layout_anchor="@+id/include"
-        app:layout_anchorGravity="center" />
-
-
-    <!--    <TextView-->
-    <!--        android:id="@+id/Text_View"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="304dp"-->
-    <!--        android:text="@string/hello"-->
-    <!--        android:textColor="@color/redish"-->
-    <!--        android:textAlignment="center"-->
-    <!--        app:layout_anchor="@+id/include"-->
-    <!--        app:layout_anchorGravity="center" />-->
-
+        android:layout_height="match_parent"
+        android:background="@android:color/holo_red_dark"
+        android:scrollbars="vertical" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
