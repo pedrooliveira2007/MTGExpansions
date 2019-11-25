@@ -21,7 +21,7 @@ public class CardDetailFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 
     public static final String TAG = "CardDetailFragment";
-    private static final String CARDID = "text";
+    public static final String CARDID = "text";
 
     private String cardId;
 
@@ -37,8 +37,10 @@ public class CardDetailFragment extends Fragment {
      * @return A new instance of fragment CardDetailFragment.
      */
 
+    //instantiate new fragment
     public static CardDetailFragment newInstance(String cadrdId) {
 
+        //new fragment
         CardDetailFragment fragment = new CardDetailFragment();
         Bundle args = new Bundle();
         args.putString(CARDID, cadrdId);

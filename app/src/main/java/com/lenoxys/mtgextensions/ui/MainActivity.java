@@ -94,11 +94,14 @@ public class MainActivity extends AppCompatActivity {
         fetchAllExpansions();
     }
 
+    //when the user choose one extension pack
     private View.OnClickListener onItemClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
+            //get extension id
             String expansionId = (String) view.getTag();
 
+            //instantiate the fragment
             CardDetailFragment cardDetailFragment = CardDetailFragment.newInstance(expansionId);
             FragmentManager fragmentManager = getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

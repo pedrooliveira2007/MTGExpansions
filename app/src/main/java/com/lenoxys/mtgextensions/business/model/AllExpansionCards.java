@@ -1,6 +1,5 @@
 package com.lenoxys.mtgextensions.business.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class AllExpansionCards {
@@ -9,33 +8,21 @@ public class AllExpansionCards {
     private List<ProviderPrices> providerPrices;
 
     private int priceId;
-
     private String numberStr;
-
     private int number;
-
     private String layouType;
-
     private String manacost;
-
     private int cmc;
-
     private String artist;
-
     private String rarity;
-
     private Name name;
-
     private Type type;
-
     private int id;
-
     private String friendlyId;
 
     public void setImageUrls(List<ImageUrls> imageUrls) {
         this.imageUrls = imageUrls;
     }
-
     public List<ImageUrls> getImageUrls() {
         return this.imageUrls;
     }
@@ -43,7 +30,6 @@ public class AllExpansionCards {
     public void setProviderPrices(List<ProviderPrices> providerPrices) {
         this.providerPrices = providerPrices;
     }
-
     public List<ProviderPrices> getProviderPrices() {
         return this.providerPrices;
     }
@@ -51,7 +37,6 @@ public class AllExpansionCards {
     public void setPriceId(int priceId) {
         this.priceId = priceId;
     }
-
     public int getPriceId() {
         return this.priceId;
     }
@@ -59,7 +44,6 @@ public class AllExpansionCards {
     public void setNumberStr(String numberStr) {
         this.numberStr = numberStr;
     }
-
     public String getNumberStr() {
         return this.numberStr;
     }
@@ -67,7 +51,6 @@ public class AllExpansionCards {
     public void setNumber(int number) {
         this.number = number;
     }
-
     public int getNumber() {
         return this.number;
     }
@@ -75,7 +58,6 @@ public class AllExpansionCards {
     public void setLayouType(String layouType) {
         this.layouType = layouType;
     }
-
     public String getLayouType() {
         return this.layouType;
     }
@@ -83,7 +65,6 @@ public class AllExpansionCards {
     public void setManacost(String manacost) {
         this.manacost = manacost;
     }
-
     public String getManacost() {
         return this.manacost;
     }
@@ -91,7 +72,6 @@ public class AllExpansionCards {
     public void setCmc(int cmc) {
         this.cmc = cmc;
     }
-
     public int getCmc() {
         return this.cmc;
     }
@@ -99,7 +79,6 @@ public class AllExpansionCards {
     public void setArtist(String artist) {
         this.artist = artist;
     }
-
     public String getArtist() {
         return this.artist;
     }
@@ -107,7 +86,6 @@ public class AllExpansionCards {
     public void setRarity(String rarity) {
         this.rarity = rarity;
     }
-
     public String getRarity() {
         return this.rarity;
     }
@@ -115,7 +93,6 @@ public class AllExpansionCards {
     public void setName(Name name) {
         this.name = name;
     }
-
     public Name getName() {
         return this.name;
     }
@@ -123,7 +100,6 @@ public class AllExpansionCards {
     public void setType(Type type) {
         this.type = type;
     }
-
     public Type getType() {
         return this.type;
     }
@@ -131,7 +107,6 @@ public class AllExpansionCards {
     public void setId(int id) {
         this.id = id;
     }
-
     public int getId() {
         return this.id;
     }
@@ -139,8 +114,8 @@ public class AllExpansionCards {
     public void setFriendlyId(String friendlyId) {
         this.friendlyId = friendlyId;
     }
-
     public String getFriendlyId() {
         return this.friendlyId;
     }
+
 }

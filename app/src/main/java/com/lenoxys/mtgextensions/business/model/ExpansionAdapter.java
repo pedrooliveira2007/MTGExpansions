@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.FragmentManager;
+
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.lenoxys.mtgextensions.R;
@@ -45,9 +45,10 @@ public class ExpansionAdapter extends RecyclerView.Adapter<ExpansionAdapter.Expa
 
         AllExpansion currentItem = expansionList.get(position);
 
-        holder.textViewExpansionCards.setText(currentItem.getCardCount() + " cards");
-        holder.textViewExpansionDate.setText("Released in " + currentItem.getReleaseDate());
+        holder.textViewExpansionId.setText(currentItem.getId());
         holder.textViewExpansionName.setText(currentItem.getName());
+        holder.textViewExpansionDate.setText("Released in " + currentItem.getReleaseDate());
+        holder.textViewExpansionCards.setText(currentItem.getCardCount() + " cards");
         holder.itemView.setTag(currentItem.getId());
     }
 
@@ -69,6 +70,7 @@ public class ExpansionAdapter extends RecyclerView.Adapter<ExpansionAdapter.Expa
             textViewExpansionCards = itemView.findViewById(R.id.expansionCards);
             textViewExpansionDate = itemView.findViewById(R.id.expansionDate);
             textViewExpansionName = itemView.findViewById(R.id.expansionName);
+
             itemView.setOnClickListener(onClickListener);
         }
     }
