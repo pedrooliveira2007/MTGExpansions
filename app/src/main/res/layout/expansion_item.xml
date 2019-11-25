@@ -18,6 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_marginStart="10dp"
+            android:layout_marginTop="11dp"
             android:text="@string/expansion_name"
             android:textColor="@color/Black"
             android:textSize="20sp" />
@@ -44,6 +45,20 @@
             android:text="@string/card_count"
             android:textColor="@color/Black"
             android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/expansionId"
+            android:layout_width="78dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="9dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="31dp"
+            android:layout_marginBottom="4dp"
+            android:text="@string/id"
+            android:textColor="@color/Black"
+            android:textSize="8sp" />
 
     </RelativeLayout>
 

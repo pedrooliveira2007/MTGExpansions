@@ -33,4 +33,5 @@ dependencies {
     implementation 'net.danlew:android.joda:2.10.3'
 
 
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 }
