@@ -6,4 +6,5 @@
     <color name="redish">#ffafdf</color>
     <color name="Black">#000000</color>
     <color name="White">#ffffff</color>
+    <color name="grey">#bbbbbb</color>
 </resources>

@@ -40,8 +40,8 @@ public class ExpansionAdapter extends RecyclerView.Adapter<ExpansionAdapter.Expa
     public void onBindViewHolder(@NonNull ExpansionViewHolder holder, int position) {
 
         AllExpansion currentItem = expansionList.get(position);
-        holder.expansionCards.setText("" + currentItem.getCardCount());
-        holder.expansionDate.setText(currentItem.getReleaseDate());
+        holder.expansionCards.setText(currentItem.getCardCount()+ " cards");
+        holder.expansionDate.setText("Released in "+ currentItem.getReleaseDate());
         holder.expansionName.setText(currentItem.getName());
     }
 
