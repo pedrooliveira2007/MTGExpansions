@@ -19,6 +19,8 @@ import com.lenoxys.mtgextensions.R;
 public class CardDetailFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+
+    public static final String TAG = "CardDetailFragment";
     private static final String CARDID = "text";
 
     private String cardId;

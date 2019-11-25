@@ -6,16 +6,17 @@ import com.google.gson.Gson;
 import com.lenoxys.mtgextensions.R;
 import com.lenoxys.mtgextensions.business.model.AllData;
 import com.lenoxys.mtgextensions.business.model.AllExpansion;
+import com.lenoxys.mtgextensions.business.model.CardDetailFragment;
 import com.lenoxys.mtgextensions.business.model.ExpansionAdapter;
-import com.lenoxys.mtgextensions.listener.OnNetworkListener;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
-
-import net.danlew.android.joda.JodaTimeAndroid;
+import android.view.View;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -93,10 +94,24 @@ public class MainActivity extends AppCompatActivity {
         fetchAllExpansions();
     }
 
+    private View.OnClickListener onItemClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            String expansionId = (String) view.getTag();
+
+            CardDetailFragment cardDetailFragment = CardDetailFragment.newInstance(expansionId);
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.add(cardDetailFragment, CardDetailFragment.TAG);
+            fragmentTransaction.commit();
+
+        }
+    };
+
     private void populateExpansionList() {
         if (allExpansions != null && !allExpansions.isEmpty()) {
 
-            expansionAdapter.setExpansionList(allExpansions);
+            expansionAdapter.setExpansionList(allExpansions, onItemClickListener);
             expansionAdapter.notifyDataSetChanged();
         }
     }
