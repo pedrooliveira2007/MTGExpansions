@@ -62,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
                 //insert all expansions into a list.
                 allExpansions = allExpansionsData.getData().getAllExpansions();
 
+                //run on main thread
                 MainActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {

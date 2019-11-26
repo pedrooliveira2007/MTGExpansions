@@ -17,8 +17,6 @@ import com.lenoxys.mtgextensions.R;
  * create an instance of this fragment.
  */
 public class CardDetailFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 
     public static final String TAG = "CardDetailFragment";
     public static final String CARDID = "text";
@@ -63,4 +61,5 @@ public class CardDetailFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_card_detail, container, false);
     }
 
+    
 }
