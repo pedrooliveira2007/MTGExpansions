@@ -61,5 +61,5 @@ public class CardDetailFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_card_detail, container, false);
     }
 
-    
+
 }

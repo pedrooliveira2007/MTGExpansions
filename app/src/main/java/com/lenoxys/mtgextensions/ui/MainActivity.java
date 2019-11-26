@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
             CardDetailFragment cardDetailFragment = CardDetailFragment.newInstance(expansionId);
             FragmentManager fragmentManager = getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.add(cardDetailFragment, CardDetailFragment.TAG);
+            fragmentTransaction.replace(R.id.fragment_constraintlayout, cardDetailFragment, CardDetailFragment.TAG);
             fragmentTransaction.commit();
 
         }

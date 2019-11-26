@@ -12,13 +12,12 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="191dp"
-
         android:layout_height="267dp"
         android:layout_marginTop="12dp"
         android:src="@mipmap/card_image"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="211dp" />
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/cardName"
@@ -29,7 +28,6 @@
         android:layout_marginEnd="5dp"
         android:text="sdasdasd"
         app:layout_constraintEnd_toStartOf="@+id/imageView"
-        app:layout_constraintHorizontal="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -42,7 +40,6 @@
         android:layout_marginEnd="5dp"
         android:text="sdasdasd"
         app:layout_constraintEnd_toStartOf="@+id/imageView"
-        app:layout_constraintHorizontal="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardName" />
 
@@ -55,7 +52,6 @@
         android:layout_marginEnd="5dp"
         android:text="sdasdasd"
         app:layout_constraintEnd_toStartOf="@+id/imageView"
-        app:layout_constraintHorizontal="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ManaCost" />
 
@@ -68,7 +64,6 @@
         android:layout_marginEnd="5dp"
         android:text="sdasdasd"
         app:layout_constraintEnd_toStartOf="@+id/imageView"
-        app:layout_constraintHorizontal="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/CardManaCost" />
 
@@ -81,7 +76,6 @@
         android:layout_marginEnd="5dp"
         android:text="sdasdasd"
         app:layout_constraintEnd_toStartOf="@+id/imageView"
-        app:layout_constraintHorizontal="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Rarity" />
 
@@ -94,9 +88,20 @@
         android:layout_marginEnd="5dp"
         android:text="sdasdasd"
         app:layout_constraintEnd_toStartOf="@+id/imageView"
-        app:layout_constraintHorizontal="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Type" />
+
+    <TextView
+        android:id="@+id/CardAbout6"
+        android:layout_width="198dp"
+        android:layout_height="23dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="5dp"
+        android:text="sdasdasd"
+        app:layout_constraintEnd_toStartOf="@+id/imageView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Artist" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
