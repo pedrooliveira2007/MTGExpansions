@@ -7,6 +7,7 @@ import com.lenoxys.mtgextensions.R;
 import com.lenoxys.mtgextensions.ui.MainActivity;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -117,7 +118,7 @@ public class CardDetailFragment extends Fragment {
 
             //instantiate the fragment
             CardDetailFragment cardDetailFragment = CardDetailFragment.newInstance(expansionId);
-            FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.fragment_constraintlayout, cardDetailFragment, CardDetailFragment.TAG);
             fragmentTransaction.commit();

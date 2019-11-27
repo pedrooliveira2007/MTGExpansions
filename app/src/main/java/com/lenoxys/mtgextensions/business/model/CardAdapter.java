@@ -27,7 +27,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardViewHolder> {
         return this.cardList;
     }
 
-    void setCardList(List<ExpansionCard> expansionCardsList, View.OnClickListener onClickListener) {
+    public void setCardList(List<ExpansionCard> expansionCardsList, View.OnClickListener onClickListener) {
         this.cardList = expansionCardsList;
         this.onClickListener = onClickListener;
     }

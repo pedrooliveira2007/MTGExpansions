@@ -35,7 +35,6 @@ public class ExpansionAdapter extends RecyclerView.Adapter<ExpansionAdapter.Expa
     @Override
     public ExpansionViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.expansion_item, parent, false);
-
         return new ExpansionViewHolder(view, onClickListener);
     }
 
