@@ -9,13 +9,13 @@ public class Data {
 
     @SerializedName("allExpansions")
     @Expose
-    private List<AllExpansion> allExpansions = null;
+    private List<Expansion> allExpansions = null;
 
-    public List<AllExpansion> getAllExpansions() {
+    public List<Expansion> getAllExpansions() {
         return allExpansions;
     }
 
-    public void setAllExpansions(List<AllExpansion> allExpansions) {
+    public void setAllExpansions(List<Expansion> allExpansions) {
         this.allExpansions = allExpansions;
     }
 

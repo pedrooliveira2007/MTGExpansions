@@ -15,18 +15,18 @@ import com.lenoxys.mtgextensions.R;
 import java.util.List;
 
 public class ExpansionAdapter extends RecyclerView.Adapter<ExpansionAdapter.ExpansionViewHolder> {
-    private List<AllExpansion> expansionList;
+    private List<Expansion> expansionList;
     View.OnClickListener onClickListener;
 
-    public ExpansionAdapter(List<AllExpansion> allExpansionList) {
+    public ExpansionAdapter(List<Expansion> allExpansionList) {
         this.expansionList = allExpansionList;
     }
 
-    public List<AllExpansion> getExpansionList() {
+    public List<Expansion> getExpansionList() {
         return expansionList;
     }
 
-    public void setExpansionList(List<AllExpansion> expansionList, View.OnClickListener onClickListener) {
+    public void setExpansionList(List<Expansion> expansionList, View.OnClickListener onClickListener) {
         this.expansionList = expansionList;
         this.onClickListener = onClickListener;
     }
@@ -43,7 +43,7 @@ public class ExpansionAdapter extends RecyclerView.Adapter<ExpansionAdapter.Expa
     @Override
     public void onBindViewHolder(@NonNull ExpansionViewHolder holder, int position) {
 
-        AllExpansion currentItem = expansionList.get(position);
+        Expansion currentItem = expansionList.get(position);
 
         holder.textViewExpansionId.setText(currentItem.getId());
         holder.textViewExpansionName.setText(currentItem.getName());

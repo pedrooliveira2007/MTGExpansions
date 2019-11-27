@@ -1,9 +1,11 @@
 package com.lenoxys.mtgextensions.business.model;
 
+import java.util.ArrayList;
+
 public class ExpansionCardData {
 
     Expansion ExpansionObject;
-    ArrayList<Object> allExpansionCards = new ArrayList<Object>();
+    ArrayList<ExpansionCard> expansionCards = new ArrayList<ExpansionCard>();
 
 
     // Getter Methods

@@ -5,7 +5,7 @@ import android.os.Bundle;
 import com.google.gson.Gson;
 import com.lenoxys.mtgextensions.R;
 import com.lenoxys.mtgextensions.business.model.AllData;
-import com.lenoxys.mtgextensions.business.model.AllExpansion;
+import com.lenoxys.mtgextensions.business.model.Expansion;
 import com.lenoxys.mtgextensions.business.model.CardDetailFragment;
 import com.lenoxys.mtgextensions.business.model.ExpansionAdapter;
 
@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
     private ExpansionAdapter expansionAdapter;
     private RecyclerView.LayoutManager layoutManager;
 
-    private List<AllExpansion> allExpansions = new ArrayList<>();
+    private List<Expansion> allExpansions = new ArrayList<>();
 
     Gson gson = new Gson();
 

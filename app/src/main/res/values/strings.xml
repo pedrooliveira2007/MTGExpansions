@@ -10,4 +10,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="id">id</string>
+    <string name="card_name">card name</string>
+    <string name="rarity">rarity</string>
+    <string name="card_type">card type</string>
 </resources>

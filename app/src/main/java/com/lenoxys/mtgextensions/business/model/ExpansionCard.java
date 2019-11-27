@@ -2,7 +2,7 @@ package com.lenoxys.mtgextensions.business.model;
 
 import java.util.List;
 
-public class AllExpansionCards {
+public class ExpansionCard {
     private List<ImageUrls> imageUrls;
 
     private List<ProviderPrices> providerPrices;
