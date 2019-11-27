@@ -72,8 +72,8 @@ public class CardDetailFragment extends Fragment {
     private void PopulateCardList() {
         if (expansionCards != null && !expansionCards.isEmpty()) {
 
-            CardAdapter.setCardList(expansionCards, onItemClickListener);
-            CardAdapter.notifyDataSetChanged();
+        //    CardAdapter.setCardList(expansionCards, onItemClickListener);
+         //   CardAdapter.notifyDataSetChanged();
         }
     }
 
