@@ -1,5 +1,10 @@
 package com.lenoxys.mtgextensions.business.model;
 
+import com.lenoxys.mtgextensions.business.model.ImageUrls;
+import com.lenoxys.mtgextensions.business.model.Name;
+import com.lenoxys.mtgextensions.business.model.ProviderPrices;
+import com.lenoxys.mtgextensions.business.model.Type;
+
 import java.util.List;
 
 public class ExpansionCard {

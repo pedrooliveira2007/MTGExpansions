@@ -6,8 +6,9 @@ import com.google.gson.Gson;
 import com.lenoxys.mtgextensions.R;
 import com.lenoxys.mtgextensions.business.model.AllData;
 import com.lenoxys.mtgextensions.business.model.Expansion;
-import com.lenoxys.mtgextensions.business.model.CardDetailFragment;
-import com.lenoxys.mtgextensions.business.model.ExpansionAdapter;
+import com.lenoxys.mtgextensions.business.model.ExpansionsAdapter;
+
+import com.lenoxys.mtgextensions.business.model.ExpansionDetailFragment;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
@@ -37,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     private static String TAG = "MainActivity";
 
     private RecyclerView recyclerView;
-    private ExpansionAdapter expansionAdapter;
+    private ExpansionsAdapter expansionsAdapter;
     private RecyclerView.LayoutManager layoutManager;
 
     private List<Expansion> allExpansions = new ArrayList<>();
@@ -71,6 +72,8 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
             }
+
+            else {Log.e("ASD", "false");}
         }
     };
 
@@ -87,12 +90,12 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
-        expansionAdapter = new ExpansionAdapter(allExpansions);
+        expansionsAdapter = new ExpansionsAdapter(allExpansions);
 
         recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(expansionAdapter);
+        recyclerView.setAdapter(expansionsAdapter);
 
-        fetchAllExpansions();
+        FetchAllExpansions();
     }
 
     //when the user choose one extension pack
@@ -103,10 +106,10 @@ public class MainActivity extends AppCompatActivity {
             String expansionId = (String) view.getTag();
 
             //instantiate the fragment
-            CardDetailFragment cardDetailFragment = CardDetailFragment.newInstance(expansionId);
+            ExpansionDetailFragment expansionDetailFragment = ExpansionDetailFragment.newInstance(expansionId);
             FragmentManager fragmentManager = getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.fragment_constraintlayout, cardDetailFragment, CardDetailFragment.TAG);
+            fragmentTransaction.replace(R.id.fragment_constraintlayout, expansionDetailFragment, ExpansionDetailFragment.TAG);
             fragmentTransaction.commit();
 
         }
@@ -115,12 +118,12 @@ public class MainActivity extends AppCompatActivity {
     private void populateExpansionList() {
         if (allExpansions != null && !allExpansions.isEmpty()) {
 
-            expansionAdapter.setExpansionList(allExpansions, onItemClickListener);
-            expansionAdapter.notifyDataSetChanged();
+            expansionsAdapter.setExpansionList(allExpansions, onItemClickListener);
+            expansionsAdapter.notifyDataSetChanged();
         }
     }
 
-    public void fetchAllExpansions() {
+    public void FetchAllExpansions() {
 
         OkHttpClient client = new OkHttpClient();
         String url = "https://cdn.bigar.com/mtg/cardjson/expansions";
@@ -130,6 +133,4 @@ public class MainActivity extends AppCompatActivity {
         client.newCall(request).enqueue(onAllExpansionsFetchedCallback);
 
     }
-
-
 }

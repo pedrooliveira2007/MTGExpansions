@@ -1,27 +1,24 @@
 package com.lenoxys.mtgextensions.business.model;
 
-import android.os.Bundle;
 
-import com.google.gson.Gson;
 import com.lenoxys.mtgextensions.R;
-import com.lenoxys.mtgextensions.ui.MainActivity;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.util.Log;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.ArrayList;
 import java.util.Objects;
+
+import com.google.gson.Gson;
+
+import org.jetbrains.annotations.NotNull;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -29,20 +26,19 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
+public class ExpansionDetailFragment extends Fragment {
 
-public class CardDetailFragment extends Fragment {
-
-    public static final String TAG = "CardDetailFragment";
-    public static final String CARDID = "text";
-
-    private String cardId;
 
     private Expansion expansion;
-    private List<ExpansionCard> expansionCards = new ArrayList<>();
+    public static final String TAG = "ExpansionDetailFragment";
+    public static final String CARDID = "text";
 
+    private ExpansionAdapter expansionAdapter;
+
+    private List<Object> expansionCards = new ArrayList<>();
     Gson gson = new Gson();
 
-    //fetch all expansions from api
+
     private final Callback onAllExpansionsFetchedCallback = new Callback() {
         @Override
         public void onFailure(@NotNull Call call, @NotNull IOException e) {
@@ -52,62 +48,50 @@ public class CardDetailFragment extends Fragment {
         @Override
         public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
             if (response.isSuccessful()) {
-
                 //pass the api into a string
                 String jsonResult = Objects.requireNonNull(response.body()).string();
                 //send the data object inside of AllData object.
-                ExpansionCardData allExpansionsData = gson.fromJson(jsonResult, ExpansionCardData.class);
+                CardAllData allExpansionData = gson.fromJson(jsonResult, CardAllData.class);
                 //insert all expansions into a list.
-                expansionCards = allExpansionsData.expansionCards;
+                allExpansionData.DataObject.allExpansionCards.size();
+                expansionCards = allExpansionData.DataObject.allExpansionCards;
 
                 //run on main thread
 
                 PopulateCardList();
 
 
+            } else {
+                Log.e("ASD", "bla bla bla false");
             }
         }
     };
 
-    private void PopulateCardList() {
-        if (expansionCards != null && !expansionCards.isEmpty()) {
-
-        //    CardAdapter.setCardList(expansionCards, onItemClickListener);
-         //   CardAdapter.notifyDataSetChanged();
-        }
-    }
-
-
-    public CardDetailFragment() {
+    public ExpansionDetailFragment() {
         // Required empty public constructor
     }
 
     //instantiate new fragment
-    public static CardDetailFragment newInstance(String cadrdId) {
-
+    public static ExpansionDetailFragment newInstance(String cardId) {
         //new fragment
-        CardDetailFragment fragment = new CardDetailFragment();
+        ExpansionDetailFragment fragment = new ExpansionDetailFragment();
         Bundle args = new Bundle();
-        args.putString(CARDID, cadrdId);
+        args.putString(CARDID, cardId);
         fragment.setArguments(args);
+        fragment.FetchExpansionCards(cardId);
+
 
         return fragment;
     }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            cardId = getArguments().getString(CARDID);
+    private void PopulateCardList() {
+        if (expansionCards != null && !expansionCards.isEmpty()) {
+
+
+            expansionAdapter = new ExpansionAdapter(expansion, expansionCards);
+            expansionAdapter.setCardList(expansionCards, onItemClickListener);
+            expansionAdapter.notifyDataSetChanged();
         }
-
-        Setup();
-    }
-
-    private void Setup() {
-
-        PopulateCardList();
-
     }
 
     private View.OnClickListener onItemClickListener = new View.OnClickListener() {
@@ -117,12 +101,12 @@ public class CardDetailFragment extends Fragment {
             String expansionId = (String) view.getTag();
 
             //instantiate the fragment
-            CardDetailFragment cardDetailFragment = CardDetailFragment.newInstance(expansionId);
-            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.fragment_constraintlayout, cardDetailFragment, CardDetailFragment.TAG);
-            fragmentTransaction.commit();
 
+//            ExpansionDetailFragment expansionDetailFragment = ExpansionDetailFragment.newInstance(expansionId);
+//            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+//            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//            fragmentTransaction.replace(R.id.fragment_constraintlayout, cardDetailFragment, ExpansionDetailFragment.TAG);
+//            fragmentTransaction.commit();
         }
     };
 
@@ -130,10 +114,10 @@ public class CardDetailFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_card_detail, container, false);
+        return inflater.inflate(R.layout.fragment_expansion_list, container, false);
     }
 
-    public void fetchExpansionCards(String expansionId) {
+    public void FetchExpansionCards(String expansionId) {
 
         OkHttpClient client = new OkHttpClient();
         String url = "https://cdn.bigar.com/mtg/cardjson/expansions/";
@@ -143,4 +127,5 @@ public class CardDetailFragment extends Fragment {
         client.newCall(request).enqueue(onAllExpansionsFetchedCallback);
 
     }
+
 }
