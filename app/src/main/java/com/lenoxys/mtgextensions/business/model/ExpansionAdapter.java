@@ -3,7 +3,6 @@ package com.lenoxys.mtgextensions.business.model;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CursorAdapter;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -38,15 +37,18 @@ public class ExpansionAdapter extends RecyclerView.Adapter<ExpansionAdapter.Expa
     @NotNull
     @Override
     public ExpansionViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.expansion_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_item, parent, false);
         return new ExpansionViewHolder(view, onClickListener);
     }
 
     @Override
     public void onBindViewHolder(final ExpansionViewHolder holder, int position) {
-        holder.textViewExpansionName.setText(actualExpansion.getName());
-        holder.textViewExpansionDate.setText(actualExpansion.getReleaseDate());
-        holder.textViewExpansionCardCount.setText((int) actualExpansion.getCardCount());
+
+        Card currentItem = cardList.get(position);
+
+        holder.textViewCardName.setText(currentItem.getName().getEn());
+        holder.textViewCardRarity.setText(currentItem.getRarity());
+        holder.textViewExpansionCardType.setText(currentItem.getLayouType());
 
     }
 
@@ -56,16 +58,16 @@ public class ExpansionAdapter extends RecyclerView.Adapter<ExpansionAdapter.Expa
     }
 
     class ExpansionViewHolder extends RecyclerView.ViewHolder {
-        TextView textViewExpansionName;
-        TextView textViewExpansionDate;
-        TextView textViewExpansionCardCount;
+        TextView textViewCardName;
+        TextView textViewCardRarity;
+        TextView textViewExpansionCardType;
 
         ExpansionViewHolder(@NonNull View itemView, View.OnClickListener onClickListener) {
             super(itemView);
 
-            textViewExpansionName = itemView.findViewById(R.id.fragment_expansion_name);
-            textViewExpansionDate = itemView.findViewById(R.id.fragment_expansion_date);
-            textViewExpansionCardCount = itemView.findViewById(R.id.fragment_expansion_cards);
+            textViewCardName = itemView.findViewById(R.id.card_name);
+            textViewCardRarity = itemView.findViewById(R.id.card_rarity);
+            textViewExpansionCardType = itemView.findViewById(R.id.card_type);
 
 
             itemView.setOnClickListener(onClickListener);
