@@ -1,11 +1,23 @@
 package com.lenoxys.mtgextensions.business.model;
 
-import java.util.ArrayList;
-
 public class AllData {
-    ArrayList< Object > data = new ArrayList < Object > ();
+    CardData data;
+    Localization localization;
 
-    public ArrayList< Object > getData() {
+    public CardData getCardData() {
         return data;
     }
+
+    public void setCardData(CardData data) {
+        this.data = data;
+    }
+
+    public Localization getLocalization() {
+        return localization;
+    }
+
+    public void setLocalization(Localization localizationObject) {
+        this.localization = localizationObject;
+    }
+
 }

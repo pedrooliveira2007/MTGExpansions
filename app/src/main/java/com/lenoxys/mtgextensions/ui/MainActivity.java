@@ -4,10 +4,10 @@ import android.os.Bundle;
 
 import com.google.gson.Gson;
 import com.lenoxys.mtgextensions.R;
-import com.lenoxys.mtgextensions.business.model.AllData;
-import com.lenoxys.mtgextensions.business.model.Data;
-import com.lenoxys.mtgextensions.business.model.ExpansionsAdapter;
+import com.lenoxys.mtgextensions.business.model.AllExpansions;
+import com.lenoxys.mtgextensions.business.model.AllExpansionsAdapter;
 
+import com.lenoxys.mtgextensions.business.model.Expansion;
 import com.lenoxys.mtgextensions.business.model.ExpansionDetailFragment;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,7 +23,6 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 import okhttp3.Call;
@@ -34,14 +33,13 @@ import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
 
-    //boa pratica
     private static String TAG = "MainActivity";
 
     private RecyclerView recyclerView;
-    private ExpansionsAdapter expansionsAdapter;
+    private AllExpansionsAdapter expansionsAdapter;
     private RecyclerView.LayoutManager layoutManager;
 
-    private ArrayList<Object> allExpansions = new ArrayList<>();
+    private ArrayList<Expansion> allExpansions = new ArrayList<>();
 
     Gson gson = new Gson();
 
@@ -58,10 +56,11 @@ public class MainActivity extends AppCompatActivity {
 
                 //pass the api into a string
                 String jsonResult = Objects.requireNonNull(response.body()).string();
+
                 //send the data object inside of AllData object.
-                AllData allExpansionsData = gson.fromJson(jsonResult, AllData.class);
+                AllExpansions allExpansionsData = gson.fromJson(jsonResult, AllExpansions.class);
                 //insert all expansions into a list.
-                allExpansions = allExpansionsData.getData();
+                allExpansions = allExpansionsData.getExpansions();
 
                 //run on main thread
                 MainActivity.this.runOnUiThread(new Runnable() {
@@ -72,8 +71,6 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
             }
-
-            else {Log.e("ASD", "false");}
         }
     };
 
@@ -90,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
-        expansionsAdapter = new ExpansionsAdapter(allExpansions);
+        expansionsAdapter = new AllExpansionsAdapter(allExpansions);
 
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(expansionsAdapter);
@@ -117,7 +114,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void populateExpansionList() {
         if (allExpansions != null && !allExpansions.isEmpty()) {
-
             expansionsAdapter.setExpansionList(allExpansions, onItemClickListener);
             expansionsAdapter.notifyDataSetChanged();
         }

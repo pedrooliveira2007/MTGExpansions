@@ -8,7 +8,7 @@ public class Expansion {
     private String code;
     private String releaseDate;
     private float cardCount;
-    ArrayList< Object > providerPrices = new ArrayList < Object > ();
+    ArrayList<Object> providerPrices = new ArrayList<Object>();
 
 
     // Getter Methods

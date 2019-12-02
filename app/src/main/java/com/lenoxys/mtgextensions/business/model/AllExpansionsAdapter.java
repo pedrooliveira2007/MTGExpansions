@@ -15,20 +15,20 @@ import com.lenoxys.mtgextensions.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ExpansionsAdapter extends RecyclerView.Adapter<ExpansionsAdapter.ExpansionViewHolder> {
-    private List<Object> expansionList;
+public class AllExpansionsAdapter extends RecyclerView.Adapter<AllExpansionsAdapter.ExpansionViewHolder> {
+    private List<Expansion> expansionList;
     private View.OnClickListener onClickListener;
 
-    public ExpansionsAdapter(ArrayList<Object> allExpansionList) {
+    public AllExpansionsAdapter(ArrayList<Expansion> allExpansionList) {
         this.expansionList = allExpansionList;
     }
 
 
-    public List<Object> getExpansionList() {
+    public List<Expansion> getExpansionList() {
         return expansionList;
     }
 
-    public void setExpansionList(List<Object> expansionList, View.OnClickListener onClickListener) {
+    public void setExpansionList(List<Expansion> expansionList, View.OnClickListener onClickListener) {
         this.expansionList = expansionList;
         this.onClickListener = onClickListener;
     }
@@ -44,13 +44,13 @@ public class ExpansionsAdapter extends RecyclerView.Adapter<ExpansionsAdapter.Ex
     @Override
     public void onBindViewHolder(@NonNull ExpansionViewHolder holder, int position) {
 
-        Data currentItem = (Data)expansionList.get(position);
+        Expansion currentItem = expansionList.get(position);
 
-        holder.textViewExpansionId.setText(currentItem.getExpansion().getId());
-        holder.textViewExpansionName.setText(currentItem.getExpansion().getName());
-        holder.textViewExpansionDate.setText("Released in " + currentItem.getExpansion().getReleaseDate());
-        holder.textViewExpansionCards.setText(currentItem.getExpansion().getCardCount() + " cards");
-        holder.itemView.setTag(currentItem.getExpansion().getId());
+        holder.textViewExpansionId.setText(currentItem.getId());
+        holder.textViewExpansionName.setText(currentItem.getName());
+        holder.textViewExpansionDate.setText("Released in " + currentItem.getReleaseDate());
+        holder.textViewExpansionCards.setText(currentItem.getCardCount() + " cards");
+        holder.itemView.setTag(currentItem.getId());
     }
 
     @Override

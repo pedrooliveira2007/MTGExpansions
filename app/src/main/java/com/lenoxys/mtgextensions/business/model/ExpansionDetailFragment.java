@@ -4,6 +4,8 @@ package com.lenoxys.mtgextensions.business.model;
 import com.lenoxys.mtgextensions.R;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.util.Log;
 import android.os.Bundle;
@@ -28,47 +30,38 @@ import okhttp3.Response;
 
 public class ExpansionDetailFragment extends Fragment {
 
-
     private Expansion expansion;
     public static final String TAG = "ExpansionDetailFragment";
-    public static final String CARDID = "text";
+    private static final String CARDID = "text";
 
-    private ExpansionAdapter expansionAdapter;
-
-    private List<Object> expansionCards = new ArrayList<>();
-    Gson gson = new Gson();
+    private List<Card> expansionCards = new ArrayList<>();
+    private Gson gson = new Gson();
 
 
     private final Callback onAllExpansionsFetchedCallback = new Callback() {
         @Override
         public void onFailure(@NotNull Call call, @NotNull IOException e) {
-            Log.e(TAG, e.getMessage());
+            Log.e(TAG, Objects.requireNonNull(e.getMessage()));
         }
 
         @Override
         public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
             if (response.isSuccessful()) {
+
                 //pass the api into a string
                 String jsonResult = Objects.requireNonNull(response.body()).string();
+
                 //send the data object inside of AllData object.
-                CardAllData allExpansionData = gson.fromJson(jsonResult, CardAllData.class);
+                AllData allData = gson.fromJson(jsonResult, AllData.class);
                 //insert all expansions into a list.
-                allExpansionData.DataObject.allExpansionCards.size();
-                expansionCards = allExpansionData.DataObject.allExpansionCards;
-
-                //run on main thread
-
+                expansionCards = allData.getCardData().getCardlist();
+                expansion = allData.getCardData().getExpansion();
                 PopulateCardList();
-
-
-            } else {
-                Log.e("ASD", "bla bla bla false");
             }
         }
     };
 
     public ExpansionDetailFragment() {
-        // Required empty public constructor
     }
 
     //instantiate new fragment
@@ -88,7 +81,7 @@ public class ExpansionDetailFragment extends Fragment {
         if (expansionCards != null && !expansionCards.isEmpty()) {
 
 
-            expansionAdapter = new ExpansionAdapter(expansion, expansionCards);
+            ExpansionAdapter expansionAdapter = new ExpansionAdapter(expansion, expansionCards);
             expansionAdapter.setCardList(expansionCards, onItemClickListener);
             expansionAdapter.notifyDataSetChanged();
         }
@@ -100,7 +93,6 @@ public class ExpansionDetailFragment extends Fragment {
             //get extension id
             String expansionId = (String) view.getTag();
 
-            //instantiate the fragment
 
 //            ExpansionDetailFragment expansionDetailFragment = ExpansionDetailFragment.newInstance(expansionId);
 //            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
