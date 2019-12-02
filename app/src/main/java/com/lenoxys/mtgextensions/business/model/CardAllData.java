@@ -1,13 +1,13 @@
 package com.lenoxys.mtgextensions.business.model;
 
 public class CardAllData {
-    CardData DataObject;
+    Data DataObject;
     Localization LocalizationObject;
 
 
     // Getter Methods
 
-    public CardData getData() {
+    public Data getData() {
         return DataObject;
     }
 
@@ -17,7 +17,7 @@ public class CardAllData {
 
     // Setter Methods
 
-    public void setData(CardData dataObject) {
+    public void setData(Data dataObject) {
         this.DataObject = dataObject;
     }
 

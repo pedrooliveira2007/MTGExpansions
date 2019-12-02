@@ -12,22 +12,23 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.lenoxys.mtgextensions.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ExpansionsAdapter extends RecyclerView.Adapter<ExpansionsAdapter.ExpansionViewHolder> {
-    private List<Expansion> expansionList;
+    private List<Object> expansionList;
     private View.OnClickListener onClickListener;
 
-    public ExpansionsAdapter(List<Expansion> allExpansionList) {
+    public ExpansionsAdapter(ArrayList<Object> allExpansionList) {
         this.expansionList = allExpansionList;
     }
 
 
-    public List<Expansion> getExpansionList() {
+    public List<Object> getExpansionList() {
         return expansionList;
     }
 
-    public void setExpansionList(List<Expansion> expansionList, View.OnClickListener onClickListener) {
+    public void setExpansionList(List<Object> expansionList, View.OnClickListener onClickListener) {
         this.expansionList = expansionList;
         this.onClickListener = onClickListener;
     }
@@ -43,13 +44,13 @@ public class ExpansionsAdapter extends RecyclerView.Adapter<ExpansionsAdapter.Ex
     @Override
     public void onBindViewHolder(@NonNull ExpansionViewHolder holder, int position) {
 
-        Expansion currentItem = expansionList.get(position);
+        Data currentItem = (Data)expansionList.get(position);
 
-        holder.textViewExpansionId.setText(currentItem.getId());
-        holder.textViewExpansionName.setText(currentItem.getName());
-        holder.textViewExpansionDate.setText("Released in " + currentItem.getReleaseDate());
-        holder.textViewExpansionCards.setText(currentItem.getCardCount() + " cards");
-        holder.itemView.setTag(currentItem.getId());
+        holder.textViewExpansionId.setText(currentItem.getExpansion().getId());
+        holder.textViewExpansionName.setText(currentItem.getExpansion().getName());
+        holder.textViewExpansionDate.setText("Released in " + currentItem.getExpansion().getReleaseDate());
+        holder.textViewExpansionCards.setText(currentItem.getExpansion().getCardCount() + " cards");
+        holder.itemView.setTag(currentItem.getExpansion().getId());
     }
 
     @Override
@@ -70,7 +71,6 @@ public class ExpansionsAdapter extends RecyclerView.Adapter<ExpansionsAdapter.Ex
             textViewExpansionCards = itemView.findViewById(R.id.expansionCards);
             textViewExpansionDate = itemView.findViewById(R.id.expansionDate);
             textViewExpansionName = itemView.findViewById(R.id.expansionName);
-
             itemView.setOnClickListener(onClickListener);
         }
     }

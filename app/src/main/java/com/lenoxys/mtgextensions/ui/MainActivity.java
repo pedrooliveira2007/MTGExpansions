@@ -5,7 +5,7 @@ import android.os.Bundle;
 import com.google.gson.Gson;
 import com.lenoxys.mtgextensions.R;
 import com.lenoxys.mtgextensions.business.model.AllData;
-import com.lenoxys.mtgextensions.business.model.Expansion;
+import com.lenoxys.mtgextensions.business.model.Data;
 import com.lenoxys.mtgextensions.business.model.ExpansionsAdapter;
 
 import com.lenoxys.mtgextensions.business.model.ExpansionDetailFragment;
@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     private ExpansionsAdapter expansionsAdapter;
     private RecyclerView.LayoutManager layoutManager;
 
-    private List<Expansion> allExpansions = new ArrayList<>();
+    private ArrayList<Object> allExpansions = new ArrayList<>();
 
     Gson gson = new Gson();
 
@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
                 //send the data object inside of AllData object.
                 AllData allExpansionsData = gson.fromJson(jsonResult, AllData.class);
                 //insert all expansions into a list.
-                allExpansions = allExpansionsData.getData().getAllExpansions();
+                allExpansions = allExpansionsData.getData();
 
                 //run on main thread
                 MainActivity.this.runOnUiThread(new Runnable() {

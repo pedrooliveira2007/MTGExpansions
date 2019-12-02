@@ -1,22 +1,21 @@
 package com.lenoxys.mtgextensions.business.model;
 
-import java.util.List;
-
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
+import java.util.ArrayList;
 
 public class Data {
+    Expansion ExpansionObject;
+    ArrayList< Object > allExpansionCards = new ArrayList < Object > ();
 
-    @SerializedName("allExpansions")
-    @Expose
-    private List<Expansion> allExpansions = null;
 
-    public List<Expansion> getAllExpansions() {
-        return allExpansions;
+    // Getter Methods
+
+    public Expansion getExpansion() {
+        return ExpansionObject;
     }
 
-    public void setAllExpansions(List<Expansion> allExpansions) {
-        this.allExpansions = allExpansions;
-    }
+    // Setter Methods
 
+    public void setExpansion(Expansion expansionObject) {
+        this.ExpansionObject = expansionObject;
+    }
 }

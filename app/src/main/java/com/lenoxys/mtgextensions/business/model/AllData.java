@@ -1,19 +1,11 @@
 package com.lenoxys.mtgextensions.business.model;
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
+
+import java.util.ArrayList;
 
 public class AllData {
+    ArrayList< Object > data = new ArrayList < Object > ();
 
-    @SerializedName("data")
-    @Expose
-    private Data data;
-
-    public Data getData() {
+    public ArrayList< Object > getData() {
         return data;
     }
-
-    public void setData(Data data) {
-        this.data = data;
-    }
-
 }
