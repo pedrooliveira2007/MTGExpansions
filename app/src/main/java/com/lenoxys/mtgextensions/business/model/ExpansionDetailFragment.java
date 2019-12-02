@@ -42,12 +42,13 @@ public class ExpansionDetailFragment extends Fragment {
     private Gson gson = new Gson();
     String cardId = "";
 
+    public ExpansionDetailFragment() {
+    }
 
     @Override
-    public void onResume() {
-        super.onResume();
-
-        fetchExpansionCards(cardId);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_expansion_list, container, false);
     }
 
     @Override
@@ -55,6 +56,13 @@ public class ExpansionDetailFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         cardId = getArguments().getString(CARDID);
 
+    }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        fetchExpansionCards(cardId);
     }
 
 
@@ -79,18 +87,14 @@ public class ExpansionDetailFragment extends Fragment {
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-
                         populateCardList();
                     }
                 });
             }
         }
     };
-
-    public ExpansionDetailFragment() {
-    }
-
     //instantiate new fragment
+
     public static ExpansionDetailFragment newInstance(String cardId) {
         //new fragment
         ExpansionDetailFragment fragment = new ExpansionDetailFragment();
@@ -131,12 +135,6 @@ public class ExpansionDetailFragment extends Fragment {
         }
     };
 
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_expansion_list, container, false);
-    }
 
     public void fetchExpansionCards(String expansionId) {
 

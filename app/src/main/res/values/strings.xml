@@ -12,4 +12,5 @@
     <string name="card_name">card name</string>
     <string name="rarity">rarity</string>
     <string name="card_type">card type</string>
+    <string name="mana_cost">manacost</string>
 </resources>

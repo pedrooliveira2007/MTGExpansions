@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(expansionsAdapter);
 
-        FetchAllExpansions();
+        fetchAllExpansions();
     }
 
     //when the user choose one extension pack
@@ -119,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void FetchAllExpansions() {
+    public void fetchAllExpansions() {
 
         OkHttpClient client = new OkHttpClient();
         String url = "https://cdn.bigar.com/mtg/cardjson/expansions";

@@ -47,8 +47,8 @@ public class ExpansionAdapter extends RecyclerView.Adapter<ExpansionAdapter.Expa
         Card currentItem = cardList.get(position);
 
         holder.textViewCardName.setText(currentItem.getName().getEn());
-        holder.textViewCardRarity.setText(currentItem.getRarity());
-        holder.textViewExpansionCardType.setText(currentItem.getLayouType());
+        holder.textViewCardRarity.setText("Rarity: " +currentItem.getRarity());
+        holder.textViewExpansionCardManaCost.setText("mana: " + currentItem.getManacost());
 
     }
 
@@ -58,16 +58,24 @@ public class ExpansionAdapter extends RecyclerView.Adapter<ExpansionAdapter.Expa
     }
 
     class ExpansionViewHolder extends RecyclerView.ViewHolder {
+        TextView textViewExpansionName;
+        TextView textViewExpansionCards;
+        TextView textViewExpansionDate;
+
         TextView textViewCardName;
         TextView textViewCardRarity;
-        TextView textViewExpansionCardType;
+        TextView textViewExpansionCardManaCost;
 
         ExpansionViewHolder(@NonNull View itemView, View.OnClickListener onClickListener) {
             super(itemView);
+            textViewExpansionCards = itemView.findViewById(R.id.fragment_expansion_name);
+            textViewExpansionName = itemView.findViewById(R.id.fragment_expansion_cards);
+            textViewExpansionDate = itemView.findViewById(R.id.fragment_expansion_date);
 
+            textViewCardRarity = itemView.findViewById(R.id.card_rarity);
             textViewCardName = itemView.findViewById(R.id.card_name);
             textViewCardRarity = itemView.findViewById(R.id.card_rarity);
-            textViewExpansionCardType = itemView.findViewById(R.id.card_type);
+            textViewExpansionCardManaCost = itemView.findViewById(R.id.card_manacost);
 
 
             itemView.setOnClickListener(onClickListener);
