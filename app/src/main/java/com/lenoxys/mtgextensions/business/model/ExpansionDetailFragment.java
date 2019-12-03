@@ -6,6 +6,8 @@ import com.lenoxys.mtgextensions.R;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -102,13 +104,11 @@ public class ExpansionDetailFragment extends Fragment {
         args.putString(CARDID, cardId);
         fragment.setArguments(args);
 
-
         return fragment;
     }
 
     private void populateCardList() {
         if (expansionCards != null && !expansionCards.isEmpty()) {
-
 
             ExpansionAdapter expansionAdapter = new ExpansionAdapter(expansion, expansionCards);
             expansionAdapter.setCardList(expansionCards, onItemClickListener);
@@ -123,18 +123,14 @@ public class ExpansionDetailFragment extends Fragment {
     private View.OnClickListener onItemClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            //get extension id
-            String expansionId = (String) view.getTag();
 
-
-//            ExpansionDetailFragment expansionDetailFragment = ExpansionDetailFragment.newInstance(expansionId);
-//            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-//            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//            fragmentTransaction.replace(R.id.fragment_constraintlayout, cardDetailFragment, ExpansionDetailFragment.TAG);
-//            fragmentTransaction.commit();
+            CardDetailFragment cardDetailFragment = CardDetailFragment.newInstance();
+            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.fragment_constraintlayout,cardDetailFragment, String.valueOf(false));
+            fragmentTransaction.commit();
         }
     };
-
 
     public void fetchExpansionCards(String expansionId) {
 

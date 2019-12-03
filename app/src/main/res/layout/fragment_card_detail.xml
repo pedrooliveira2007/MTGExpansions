@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,7 +11,7 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="191dp"
+        android:layout_width="match_parent"
         android:layout_height="267dp"
         android:layout_marginTop="12dp"
         android:src="@mipmap/card_image"
@@ -20,19 +21,19 @@
 
     <TextView
         android:id="@+id/cardName"
-        android:layout_width="198dp"
+        android:layout_width="401dp"
         android:layout_height="73dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="5dp"
-        android:text="sdasdasd"
+        android:text="cardName"
         app:layout_constraintEnd_toStartOf="@+id/imageView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/ManaCost"
-        android:layout_width="198dp"
+        android:layout_width="197dp"
         android:layout_height="23dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="4dp"
@@ -61,7 +62,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="5dp"
-        android:text="sdasdasd"
+        android:text="Rarity"
         app:layout_constraintEnd_toStartOf="@+id/imageView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/CardManaCost" />
@@ -73,7 +74,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="5dp"
-        android:text="sdasdasd"
+        android:text="Type"
         app:layout_constraintEnd_toStartOf="@+id/imageView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Rarity" />
@@ -85,22 +86,22 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="5dp"
-        android:text="sdasdasd"
+        android:text="Artist"
         app:layout_constraintEnd_toStartOf="@+id/imageView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Type" />
 
     <TextView
-        android:id="@+id/CardAbout6"
+        android:id="@+id/Price"
         android:layout_width="198dp"
         android:layout_height="23dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="5dp"
-        android:text="sdasdasd"
+        android:text="price"
         app:layout_constraintEnd_toStartOf="@+id/imageView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Artist" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
