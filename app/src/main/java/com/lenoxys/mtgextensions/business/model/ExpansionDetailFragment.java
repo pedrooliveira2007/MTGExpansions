@@ -120,7 +120,7 @@ public class ExpansionDetailFragment extends Fragment {
         public void onClick(View view) {
             String CardId = (String) view.getTag();
             CardDetailFragment cardDetailFragment = CardDetailFragment.newInstance(CardId);
-            Log.e("alala",CardId);
+            Log.e("alala",CardId);//change the string
             FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.fragment_constraintlayout, cardDetailFragment, String.valueOf(false));
