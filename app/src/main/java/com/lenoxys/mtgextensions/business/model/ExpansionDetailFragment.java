@@ -75,7 +75,7 @@ public class ExpansionDetailFragment extends Fragment {
                 AllData allData = gson.fromJson(jsonResult, AllData.class);
                 expansionCards = allData.getCardData().getCardlist();
                 expansion = allData.getCardData().getExpansion();
-                if(getActivity()!= null){
+                if (getActivity() != null) {
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
@@ -120,7 +120,7 @@ public class ExpansionDetailFragment extends Fragment {
         public void onClick(View view) {
             String CardId = (String) view.getTag();
             CardDetailFragment cardDetailFragment = CardDetailFragment.newInstance(CardId);
-            Log.e("alala",CardId);//change the string
+            Log.e("alala", CardId);//change the string
             FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.fragment_constraintlayout, cardDetailFragment, String.valueOf(false));
