@@ -11,7 +11,6 @@ import com.lenoxys.mtgextensions.R;
 
 
 class CardAdapter {
-
     private Card actualCard;
     private View.OnClickListener onClickListener;
 
@@ -34,31 +33,17 @@ class CardAdapter {
     }
 
     public void onBindViewHolder(final CardAdapter.CardViewHolder holder, int position) {
-
-
         holder.textViewCardName.setText(actualCard.getName().getEn());
         holder.textViewCardRarity.setText("Rarity: " + actualCard.getRarity());
         holder.textViewExpansionCardManaCost.setText("mana: " + actualCard.getManacost());
-
     }
 
-
     class CardViewHolder {
-        TextView textViewExpansionName;
-        TextView textViewExpansionCards;
-        TextView textViewExpansionDate;
-
         TextView textViewCardName;
         TextView textViewCardRarity;
         TextView textViewExpansionCardManaCost;
 
-        CardViewHolder(View view , View.OnClickListener onClickListener) {
-
-
-            textViewExpansionCards = view.findViewById(R.id.fragment_expansion_name);
-            textViewExpansionName = view.findViewById(R.id.fragment_expansion_cards);
-            textViewExpansionDate = view.findViewById(R.id.fragment_expansion_date);
-
+        CardViewHolder(View view, View.OnClickListener onClickListener) {
             textViewCardRarity = view.findViewById(R.id.card_rarity);
             textViewCardName = view.findViewById(R.id.card_name);
             textViewCardRarity = view.findViewById(R.id.card_rarity);

@@ -7,7 +7,6 @@ class URLs {
     public String png;
     public String artcrop;
 
-
     public String getSmall() {
         return small;
     }

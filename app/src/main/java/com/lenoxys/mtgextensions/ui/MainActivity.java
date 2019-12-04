@@ -38,12 +38,9 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private AllExpansionsAdapter expansionsAdapter;
     private RecyclerView.LayoutManager layoutManager;
-
     private ArrayList<Expansion> allExpansions = new ArrayList<>();
-
     Gson gson = new Gson();
 
-    //fetch all expansions from api
     private Callback onAllExpansionsFetchedCallback = new Callback() {
         @Override
         public void onFailure(@NotNull Call call, @NotNull IOException e) {
@@ -53,27 +50,18 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
             if (response.isSuccessful()) {
-
-                //pass the api into a string
                 String jsonResult = Objects.requireNonNull(response.body()).string();
-
-                //send the data object inside of AllData object.
                 AllExpansions allExpansionsData = gson.fromJson(jsonResult, AllExpansions.class);
-                //insert all expansions into a list.
                 allExpansions = allExpansionsData.getExpansions();
-
-                //run on main thread
                 MainActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-
                         populateExpansionList();
                     }
                 });
             }
         }
     };
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,16 +70,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setup() {
-
         setContentView(R.layout.activity_main);
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         expansionsAdapter = new AllExpansionsAdapter(allExpansions);
-
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(expansionsAdapter);
-
         fetchAllExpansions();
     }
 
@@ -99,16 +84,12 @@ public class MainActivity extends AppCompatActivity {
     private View.OnClickListener onItemClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            //get extension id
             String expansionId = (String) view.getTag();
-
-            //instantiate the fragment
             ExpansionDetailFragment expansionDetailFragment = ExpansionDetailFragment.newInstance(expansionId);
             FragmentManager fragmentManager = getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.fragment_constraintlayout, expansionDetailFragment, ExpansionDetailFragment.TAG);
             fragmentTransaction.commit();
-
         }
     };
 
@@ -120,13 +101,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void fetchAllExpansions() {
-
         OkHttpClient client = new OkHttpClient();
         String url = "https://cdn.bigar.com/mtg/cardjson/expansions";
-
         Request request;
         request = new Request.Builder().url(url).build();
         client.newCall(request).enqueue(onAllExpansionsFetchedCallback);
-
     }
 }

@@ -12,56 +12,17 @@
     tools:listitem="@layout/card_item"
     tools:ignore="PrivateResource">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBarLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="0dp">
-
-        <TextView
-            android:id="@+id/fragment_expansion_name"
-            android:layout_width="377dp"
-            android:layout_height="59dp"
-            android:text="@string/expansion_name"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/fragment_expansion_cards"
-            android:layout_width="254dp"
-            android:layout_height="34dp"
-            android:layout_marginTop="4dp"
-            android:text="@string/card_count"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fragment_expansion_name" />
-
-        <TextView
-            android:id="@+id/fragment_expansion_date"
-            android:layout_width="255dp"
-            android:layout_height="38dp"
-            android:layout_marginTop="4dp"
-            android:text="@string/date"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fragment_expansion_name" />
-
-
-    </com.google.android.material.appbar.AppBarLayout>
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/fragment_expansion_recyclerView2"
-        android:layout_width="413dp"
-        android:layout_height="461dp"
-
-        android:layout_marginTop="1dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_marginBottom="2dp"
+        android:background="#000000"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayout">
+        app:layout_constraintTop_toTopOf="parent">
 
     </androidx.recyclerview.widget.RecyclerView>
 </androidx.constraintlayout.widget.ConstraintLayout>
