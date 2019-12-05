@@ -87,6 +87,18 @@ public class ExpansionDetailFragment extends Fragment {
         }
     };
 
+    private void populateCardList() {
+        if (expansionCards != null && !expansionCards.isEmpty()) {
+            ExpansionAdapter expansionAdapter = new ExpansionAdapter(expansion, expansionCards);
+            expansionAdapter.setCardList(expansionCards, onItemClickListener);
+            RecyclerView recyclerView = getView().findViewById(R.id.fragment_expansion_recyclerView2);
+            recyclerView.setAdapter(expansionAdapter);
+            layoutManager = new LinearLayoutManager(getContext());
+            recyclerView.setLayoutManager(layoutManager);
+            expansionAdapter.notifyDataSetChanged();
+        }
+    }
+
     public static ExpansionDetailFragment newInstance(String cardId) {
         ExpansionDetailFragment fragment = new ExpansionDetailFragment();
         Bundle args = new Bundle();
@@ -101,18 +113,6 @@ public class ExpansionDetailFragment extends Fragment {
         Request request;
         request = new Request.Builder().url(url + expansionId).build();
         client.newCall(request).enqueue(onAllExpansionsFetchedCallback);
-    }
-
-    private void populateCardList() {
-        if (expansionCards != null && !expansionCards.isEmpty()) {
-            ExpansionAdapter expansionAdapter = new ExpansionAdapter(expansion, expansionCards);
-            expansionAdapter.setCardList(expansionCards, onItemClickListener);
-            RecyclerView recyclerView = getView().findViewById(R.id.fragment_expansion_recyclerView2);
-            recyclerView.setAdapter(expansionAdapter);
-            layoutManager = new LinearLayoutManager(getContext());
-            recyclerView.setLayoutManager(layoutManager);
-            expansionAdapter.notifyDataSetChanged();
-        }
     }
 
     private View.OnClickListener onItemClickListener = new View.OnClickListener() {

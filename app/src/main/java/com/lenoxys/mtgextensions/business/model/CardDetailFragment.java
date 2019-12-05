@@ -16,7 +16,7 @@ import com.lenoxys.mtgextensions.R;
 
 public class CardDetailFragment extends Fragment implements View.OnClickListener {
     public static final String TAG = "CardDetailFragment";
-    private static final String CARDID = "text";
+    private static final String CARDID = "";
 
     public CardDetailFragment() {
     }
@@ -24,7 +24,6 @@ public class CardDetailFragment extends Fragment implements View.OnClickListener
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_card_detail, container, false);
-
     }
 
     @Override
@@ -37,12 +36,17 @@ public class CardDetailFragment extends Fragment implements View.OnClickListener
         TextView artistName = view.findViewById(R.id.card_artist);
         TextView price = view.findViewById(R.id.card_price);
         TextView type = view.findViewById(R.id.card_type);
-        ImageView cardimage = view.findViewById(R.id.card_image);
+        ImageView cardImage = view.findViewById(R.id.card_image);
         Button backButton = view.findViewById(R.id.card_back);
 
-        backButton.setOnClickListener(this);
-
-
+//        backButton.setOnClickListener(this);
+//        cardName.setText();
+//        rarity.setText();
+//        manaCost.setText();
+//        artistName.setText();
+//        price.setText();
+//        type.setText();
+//        cardImage.setImageURI();
     }
 
     @Override
@@ -58,11 +62,9 @@ public class CardDetailFragment extends Fragment implements View.OnClickListener
         return fragment;
     }
 
-
     @Override
     public void onClick(View v) {
 
     }
+
 }
-
-
