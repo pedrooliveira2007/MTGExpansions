@@ -14,7 +14,7 @@ import androidx.fragment.app.Fragment;
 
 import com.lenoxys.mtgextensions.R;
 
-public class CardDetailFragment extends Fragment {
+public class CardDetailFragment extends Fragment implements View.OnClickListener {
     public static final String TAG = "CardDetailFragment";
     private static final String CARDID = "text";
 
@@ -39,6 +39,10 @@ public class CardDetailFragment extends Fragment {
         TextView type = view.findViewById(R.id.card_type);
         ImageView cardimage = view.findViewById(R.id.card_image);
         Button backButton = view.findViewById(R.id.card_back);
+
+        backButton.setOnClickListener(this);
+
+
     }
 
     @Override
@@ -54,13 +58,11 @@ public class CardDetailFragment extends Fragment {
         return fragment;
     }
 
-    private View.OnClickListener onItemClickListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-        }
-    };
 
+    @Override
+    public void onClick(View v) {
 
+    }
 }
 
 

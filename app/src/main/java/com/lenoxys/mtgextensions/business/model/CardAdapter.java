@@ -14,6 +14,7 @@ class CardAdapter {
     private Card actualCard;
     private View.OnClickListener onClickListener;
 
+
     CardAdapter(Card card) {
         this.actualCard = card;
     }

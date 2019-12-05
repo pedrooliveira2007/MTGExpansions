@@ -63,6 +63,13 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+    private void populateExpansionList() {
+        if (allExpansions != null && !allExpansions.isEmpty()) {
+            expansionsAdapter.setExpansionList(allExpansions, onItemClickListener);
+            expansionsAdapter.notifyDataSetChanged();
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,8 +86,8 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(expansionsAdapter);
         fetchAllExpansions();
     }
-
     //when the user choose one extension pack
+
     private View.OnClickListener onItemClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
@@ -92,13 +99,6 @@ public class MainActivity extends AppCompatActivity {
             fragmentTransaction.commit();
         }
     };
-
-    private void populateExpansionList() {
-        if (allExpansions != null && !allExpansions.isEmpty()) {
-            expansionsAdapter.setExpansionList(allExpansions, onItemClickListener);
-            expansionsAdapter.notifyDataSetChanged();
-        }
-    }
 
     public void fetchAllExpansions() {
         OkHttpClient client = new OkHttpClient();
