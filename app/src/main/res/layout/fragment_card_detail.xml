@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_card_detail"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#804433"
     android:clickable="true"
     android:focusable="true"
     android:orientation="vertical"
-    android:id="@+id/fragment_card_detail">
+    app:layout_constraintBottom_toBottomOf="parent">
+
 
     <Button
         android:id="@+id/card_back"
@@ -21,8 +22,9 @@
 
     <ImageView
         android:id="@+id/card_image"
-        android:layout_width="match_parent"
-        android:layout_height="320dp"
+        android:layout_width="413dp"
+        android:layout_height="296dp"
+        android:layout_marginTop="16dp"
         android:src="@mipmap/card_image"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"

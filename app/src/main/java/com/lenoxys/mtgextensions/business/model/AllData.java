@@ -1,5 +1,7 @@
 package com.lenoxys.mtgextensions.business.model;
 
+import com.lenoxys.mtgextensions.business.model.fields.Localization;
+
 public class AllData {
     CardData data;
     Localization localization;

@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
     private Callback onAllExpansionsFetchedCallback = new Callback() {
         @Override
         public void onFailure(@NotNull Call call, @NotNull IOException e) {
-            Log.e(TAG, e.getMessage());
+            Log.e(TAG, Objects.requireNonNull(e.getMessage()));
         }
 
         @Override

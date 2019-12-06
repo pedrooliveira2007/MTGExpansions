@@ -2,8 +2,11 @@ package com.lenoxys.mtgextensions.business.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.lenoxys.mtgextensions.business.model.fields.Name;
+import com.lenoxys.mtgextensions.business.model.fields.ProviderPrice;
+import com.lenoxys.mtgextensions.business.model.fields.Type;
+import com.lenoxys.mtgextensions.business.model.fields.URLs;
 
-import java.net.URL;
 import java.util.List;
 
 public class Card {

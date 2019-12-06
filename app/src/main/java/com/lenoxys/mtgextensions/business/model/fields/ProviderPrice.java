@@ -1,4 +1,4 @@
-package com.lenoxys.mtgextensions.business.model;
+package com.lenoxys.mtgextensions.business.model.fields;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
-package com.lenoxys.mtgextensions.business.model;
+package com.lenoxys.mtgextensions.business.model.fields;
 
-class URLs {
+public class URLs {
     public String small;
     public String normal;
     public String large;

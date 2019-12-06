@@ -1,4 +1,4 @@
-package com.lenoxys.mtgextensions.business.model;
+package com.lenoxys.mtgextensions.business.model.fields;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
