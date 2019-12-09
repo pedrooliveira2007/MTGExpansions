@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="4dp"
     android:layout_marginHorizontal="4dp"
+    android:layout_marginBottom="4dp"
     app:cardBackgroundColor="@color/deep_blue"
     app:cardCornerRadius="4dp">
 
@@ -34,7 +34,8 @@
             android:layout_marginTop="11dp"
             android:text="@string/card_name"
             android:textColor="@color/Black"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/card_rarity"
@@ -60,7 +61,6 @@
             android:textAlignment="textEnd"
             android:textColor="@color/Black"
             android:textSize="15sp" />
-
 
 
     </RelativeLayout>
