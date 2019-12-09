@@ -134,9 +134,7 @@ public class ExpansionDetailFragment extends Fragment {
                     card = c;
                     break;
                 }
-
             }
-
             CardDetailFragment cardDetailFragment = CardDetailFragment.newInstance(cardId, card);
             FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

@@ -49,7 +49,7 @@ public class ExpansionAdapter extends RecyclerView.Adapter<ExpansionAdapter.Expa
     public void onBindViewHolder(final ExpansionViewHolder holder, int position) {
         Card currentItem = cardList.get(position);
         holder.textViewCardName.setText(currentItem.getName().getEn());
-        holder.textViewCardRarity.setText("Rarity: " + currentItem.getRarity());
+        holder.textViewCardRarity.setText("Rarity: " + setRarity(currentItem.getRarity()));
         holder.textViewExpansionCardManaCost.setText("mana: " + currentItem.getManacost());
         holder.itemView.setTag(currentItem.getFriendlyId());
     }
@@ -74,5 +74,33 @@ public class ExpansionAdapter extends RecyclerView.Adapter<ExpansionAdapter.Expa
             textViewExpansionCardManaCost = itemView.findViewById(R.id.card_manacost);
             itemView.setOnClickListener(onClickListener);
         }
+    }
+
+    private String setRarity(String rar) {
+
+        String rarity;
+        switch (rar) {
+
+            case "C":
+                rarity = "common";
+                break;
+
+            case "U":
+                rarity = "uncommon";
+                break;
+
+            case "R":
+                rarity = "rare";
+                break;
+
+            case "M":
+                rarity = "Mythic";
+                break;
+
+            default:
+                rarity = "undefined";
+                break;
+        }
+        return rarity;
     }
 }

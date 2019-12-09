@@ -50,7 +50,7 @@ public class AllExpansionsAdapter extends RecyclerView.Adapter<AllExpansionsAdap
         holder.textViewExpansionId.setText(currentItem.getId());
         holder.textViewExpansionName.setText(currentItem.getName());
         holder.textViewExpansionDate.setText("Released in " + currentItem.getReleaseDate());
-        holder.textViewExpansionCards.setText(currentItem.getCardCount() + " cards");
+        holder.textViewExpansionCards.setText((int)currentItem.getCardCount() + " cards");
         holder.itemView.setTag(currentItem.getId());
     }
 

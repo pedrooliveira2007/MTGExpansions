@@ -1,10 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#02CDB7</color>
-    <color name="colorPrimaryDark">#182321</color>
-    <color name="colorAccent">#D81B60</color>
-    <color name="redish">#ffafdf</color>
-    <color name="Black">#000000</color>
-    <color name="White">#ffffff</color>
-    <color name="grey">#BBBBBB</color>
+    <color name="colorPrimary">
+        #02CDB7
+    </color>
+    <color name="colorPrimaryDark">
+        #182321
+    </color>
+    <color name="colorAccent">
+        #D81B60
+    </color>
+    <color name="redish">
+        #ffafdf
+    </color>
+    <color name="Black">
+        #000000
+    </color>
+    <color name="White">
+        #ffffff
+    </color>
+    <color name="grey">
+        #BBBBBB
+    </color>
+    <color name="gold">
+        #CCD0C74A
+    </color>
+    <color name="deep_blue">
+        #0C2B3E
+    </color>
+    <color name="blue">#133F5A</color>
 </resources>
