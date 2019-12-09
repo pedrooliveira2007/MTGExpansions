@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grey"
+    android:clickable="true"
+    android:focusable="true"
+    android:id="@+id/fragment_card_detail">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/card_image"
+            android:layout_width="240dp"
+            android:layout_height="300dp"
+            android:layout_marginHorizontal="60dp"
+            android:scaleType="fitXY"
+            android:src="@mipmap/card_image"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/card_name"
+            style="@style/card_detail_style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            tools:text="card name" />
+
+        <TextView
+            android:id="@+id/card_type"
+            style="@style/card_detail_style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Type" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="10">
+
+            <TextView
+                android:id="@+id/card_rarity"
+                style="@style/card_detail_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                tools:text="rarity" />
+
+            <TextView
+                android:id="@+id/card_mana_cost"
+                style="@style/card_detail_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                tools:text="mana Cost" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/card_artist"
+            style="@style/card_detail_style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Artist name" />
+
+        <TextView
+            android:id="@+id/card_price"
+            style="@style/card_detail_style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="price
+" />
+
+    </LinearLayout>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
