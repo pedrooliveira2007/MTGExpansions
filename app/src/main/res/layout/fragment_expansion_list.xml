@@ -9,20 +9,22 @@
     android:background="@color/cardview_shadow_start_color"
     app:layoutManager="LinearLayoutManager"
     tools:context=".ui.fragments.ExpansionDetailFragment"
-    tools:listitem="@layout/card_item"
-    tools:ignore="PrivateResource">
+    tools:ignore="PrivateResource"
+    tools:listitem="@layout/card_item">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/fragment_expansion_recyclerView2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="2dp"
+     
         android:background="@color/blue"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
 
     </androidx.recyclerview.widget.RecyclerView>
 </androidx.constraintlayout.widget.ConstraintLayout>

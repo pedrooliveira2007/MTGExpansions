@@ -45,6 +45,8 @@ public class ExpansionDetailFragment extends Fragment {
     private List<Card> expansionCards = new ArrayList<>();
     private Gson gson = new Gson();
     String expansionId = "";
+    private ExpansionAdapter expansionAdapter;
+    private RecyclerView recyclerView;
 
     public ExpansionDetailFragment() {
     }
@@ -58,6 +60,13 @@ public class ExpansionDetailFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         expansionId = getArguments().getString(EXPANSION_ID);
+        expansionAdapter = new ExpansionAdapter(expansion, expansionCards);
+        expansionAdapter.setCardList(new ArrayList<Card>(), onItemClickListener);
+
+        recyclerView = Objects.requireNonNull(getView()).findViewById(R.id.fragment_expansion_recyclerView2);
+        recyclerView.setAdapter(expansionAdapter);
+        layoutManager = new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(layoutManager);
     }
 
     @Override
@@ -102,15 +111,7 @@ public class ExpansionDetailFragment extends Fragment {
     private void populateCardList() {
         if (expansionCards != null && !expansionCards.isEmpty()) {
 
-            ExpansionAdapter expansionAdapter = new ExpansionAdapter(expansion, expansionCards);
             expansionAdapter.setCardList(expansionCards, onItemClickListener);
-
-            RecyclerView recyclerView = getView().findViewById(R.id.fragment_expansion_recyclerView2);
-            recyclerView.setAdapter(expansionAdapter);
-
-            layoutManager = new LinearLayoutManager(getContext());
-            recyclerView.setLayoutManager(layoutManager);
-
             expansionAdapter.notifyDataSetChanged();
         }
     }
@@ -136,7 +137,7 @@ public class ExpansionDetailFragment extends Fragment {
                 }
             }
             CardDetailFragment cardDetailFragment = CardDetailFragment.newInstance(cardId, card);
-            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+            FragmentManager fragmentManager = Objects.requireNonNull(getActivity()).getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.addToBackStack(CardDetailFragment.TAG);
             fragmentTransaction.replace(R.id.fragment_container, cardDetailFragment, String.valueOf(false));
