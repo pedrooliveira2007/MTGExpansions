@@ -5,10 +5,10 @@ import android.os.Bundle;
 import com.google.gson.Gson;
 import com.lenoxys.mtgextensions.R;
 import com.lenoxys.mtgextensions.business.model.AllExpansions;
-import com.lenoxys.mtgextensions.business.model.AllExpansionsAdapter;
+import com.lenoxys.mtgextensions.ui.adapter.AllExpansionsAdapter;
 
 import com.lenoxys.mtgextensions.business.model.Expansion;
-import com.lenoxys.mtgextensions.business.model.ExpansionDetailFragment;
+import com.lenoxys.mtgextensions.ui.fragments.ExpansionDetailFragment;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
@@ -95,7 +95,8 @@ public class MainActivity extends AppCompatActivity {
             ExpansionDetailFragment expansionDetailFragment = ExpansionDetailFragment.newInstance(expansionId);
             FragmentManager fragmentManager = getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.fragment_constraintlayout, expansionDetailFragment, ExpansionDetailFragment.TAG);
+            fragmentTransaction.addToBackStack(ExpansionDetailFragment.TAG);
+            fragmentTransaction.replace(R.id.fragment_container, expansionDetailFragment, ExpansionDetailFragment.TAG);
             fragmentTransaction.commit();
         }
     };

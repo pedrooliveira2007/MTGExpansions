@@ -1,4 +1,4 @@
-package com.lenoxys.mtgextensions.business.model;
+package com.lenoxys.mtgextensions.ui.fragments;
 
 
 import com.lenoxys.mtgextensions.R;
@@ -23,6 +23,10 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 import com.google.gson.Gson;
+import com.lenoxys.mtgextensions.business.model.AllData;
+import com.lenoxys.mtgextensions.business.model.Card;
+import com.lenoxys.mtgextensions.business.model.Expansion;
+import com.lenoxys.mtgextensions.ui.adapter.ExpansionAdapter;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -122,11 +126,22 @@ public class ExpansionDetailFragment extends Fragment {
     private View.OnClickListener onItemClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            String CardId = (String) view.getTag();//change the string
-            CardDetailFragment cardDetailFragment = CardDetailFragment.newInstance(CardId);
+            Card card = new Card();
+
+            String cardId = (String) view.getTag();//change the string
+            for (Card c : expansionCards) {
+                if (c.getFriendlyId().equals(cardId)) {
+                    card = c;
+                    break;
+                }
+
+            }
+
+            CardDetailFragment cardDetailFragment = CardDetailFragment.newInstance(cardId, card);
             FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.fragment_constraintlayout, cardDetailFragment, String.valueOf(false));
+            fragmentTransaction.addToBackStack(CardDetailFragment.TAG);
+            fragmentTransaction.replace(R.id.fragment_container, cardDetailFragment, String.valueOf(false));
             fragmentTransaction.commit();
         }
     };

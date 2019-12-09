@@ -1,5 +1,6 @@
-package com.lenoxys.mtgextensions.business.model;
+package com.lenoxys.mtgextensions.ui.adapter;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.lenoxys.mtgextensions.R;
+import com.lenoxys.mtgextensions.business.model.Card;
+import com.lenoxys.mtgextensions.business.model.Expansion;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -20,7 +23,7 @@ public class ExpansionAdapter extends RecyclerView.Adapter<ExpansionAdapter.Expa
     private List<Card> cardList;
     private View.OnClickListener onClickListener;
 
-    ExpansionAdapter(Expansion expansion, List<Card> cards) {
+    public ExpansionAdapter(Expansion expansion, List<Card> cards) {
         this.cardList = cards;
         this.actualExpansion = expansion;
     }
@@ -29,7 +32,7 @@ public class ExpansionAdapter extends RecyclerView.Adapter<ExpansionAdapter.Expa
         return cardList;
     }
 
-    void setCardList(List<Card> cards, View.OnClickListener onClickListener) {
+    public void setCardList(List<Card> cards, View.OnClickListener onClickListener) {
         this.cardList = cards;
         this.onClickListener = onClickListener;
     }
@@ -41,12 +44,14 @@ public class ExpansionAdapter extends RecyclerView.Adapter<ExpansionAdapter.Expa
         return new ExpansionViewHolder(view, onClickListener);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(final ExpansionViewHolder holder, int position) {
         Card currentItem = cardList.get(position);
         holder.textViewCardName.setText(currentItem.getName().getEn());
         holder.textViewCardRarity.setText("Rarity: " + currentItem.getRarity());
         holder.textViewExpansionCardManaCost.setText("mana: " + currentItem.getManacost());
+        holder.itemView.setTag(currentItem.getFriendlyId());
     }
 
     @Override

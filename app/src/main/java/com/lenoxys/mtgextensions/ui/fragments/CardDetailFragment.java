@@ -1,10 +1,9 @@
-package com.lenoxys.mtgextensions.business.model;
+package com.lenoxys.mtgextensions.ui.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -13,10 +12,13 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.lenoxys.mtgextensions.R;
+import com.lenoxys.mtgextensions.business.model.Card;
+import com.squareup.picasso.Picasso;
 
 public class CardDetailFragment extends Fragment implements View.OnClickListener {
     public static final String TAG = "CardDetailFragment";
     private static final String CARDID = "";
+    private Card card;
 
     public CardDetailFragment() {
     }
@@ -32,21 +34,22 @@ public class CardDetailFragment extends Fragment implements View.OnClickListener
 
         TextView cardName = view.findViewById(R.id.card_name);
         TextView rarity = view.findViewById(R.id.card_rarity);
-        TextView manaCost = view.findViewById(R.id.card_manacost);
+        TextView manaCost = view.findViewById(R.id.card_mana_cost);
         TextView artistName = view.findViewById(R.id.card_artist);
         TextView price = view.findViewById(R.id.card_price);
         TextView type = view.findViewById(R.id.card_type);
         ImageView cardImage = view.findViewById(R.id.card_image);
-        Button backButton = view.findViewById(R.id.card_back);
+       // Button backButton = view.findViewById(R.id.card_back);
 
-//        backButton.setOnClickListener(this);
-//        cardName.setText();
-//        rarity.setText();
-//        manaCost.setText();
-//        artistName.setText();
-//        price.setText();
-//        type.setText();
-//        cardImage.setImageURI();
+       // backButton.setOnClickListener(this);
+        cardName.setText(card.getName().getEn());
+        rarity.setText(card.getRarity());
+        manaCost.setText(card.getManacost());
+        artistName.setText(card.getArtist());
+        // price.setText(card.getPr);
+        type.setText(card.getType().getEn());
+        Picasso.get().load(card.getImageUrls().get(0).getLarge()).into(cardImage);
+
     }
 
     @Override
@@ -54,10 +57,11 @@ public class CardDetailFragment extends Fragment implements View.OnClickListener
         super.onResume();
     }
 
-    public static CardDetailFragment newInstance(String cardId) {
+    public static CardDetailFragment newInstance(String cardId, Card card) {
         CardDetailFragment fragment = new CardDetailFragment();
         Bundle args = new Bundle();
         args.putString(CARDID, cardId);
+        fragment.card = card;
         fragment.setArguments(args);
         return fragment;
     }

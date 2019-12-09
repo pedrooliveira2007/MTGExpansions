@@ -1,4 +1,4 @@
-package com.lenoxys.mtgextensions.business.model;
+package com.lenoxys.mtgextensions.ui.adapter;
 
 import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.lenoxys.mtgextensions.R;
+import com.lenoxys.mtgextensions.business.model.Expansion;
 
 import java.util.ArrayList;
 import java.util.List;

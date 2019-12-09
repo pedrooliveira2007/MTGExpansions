@@ -5,31 +5,23 @@
     android:id="@+id/fragment_card_detail"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#804433"
+    android:background="@color/colorPrimaryDark"
     android:clickable="true"
     android:focusable="true"
     android:orientation="vertical"
     app:layout_constraintBottom_toBottomOf="parent">
 
 
-    <Button
-        android:id="@+id/card_back"
-        android:layout_width="209dp"
-        android:layout_height="48dp"
-        android:text="back"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <ImageView
         android:id="@+id/card_image"
-        android:layout_width="413dp"
-        android:layout_height="296dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="320dp"
+        android:scaleType="centerCrop"
         android:src="@mipmap/card_image"
+        android:layout_margin="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/card_back"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
 
     <TextView
@@ -37,6 +29,10 @@
         android:layout_width="match_parent"
         android:layout_height="38dp"
         android:text="cardName"
+        android:textAlignment="center"
+        android:textColor="@color/Black"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/card_image" />
@@ -44,42 +40,56 @@
     <TextView
         android:id="@+id/card_rarity"
         android:layout_width="198dp"
-        android:layout_height="23dp"
-        android:layout_marginTop="9dp"
-        android:layout_marginEnd="4dp"
+        android:layout_height="26dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="212dp"
         android:text="Rarity"
+        android:textColor="@color/Black"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/card_name" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/card_type" />
 
     <TextView
         android:id="@+id/card_mana_cost"
-        android:layout_width="197dp"
-        android:layout_height="23dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="9dp"
+        android:layout_width="198dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="212dp"
+        android:layout_marginTop="8dp"
         android:text="ManaCost"
+        android:textColor="@color/Black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/card_type" />
+
+    <TextView
+        android:id="@+id/card_type"
+        android:layout_width="411dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="8dp"
+        android:text="Type"
+        android:textAlignment="center"
+        android:textColor="@color/Black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/card_name" />
 
     <TextView
-        android:id="@+id/card_type"
-        android:layout_width="198dp"
-        android:layout_height="23dp"
-        android:layout_marginStart="208dp"
-        android:layout_marginTop="4dp"
-        android:text="Type"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/card_rarity" />
-
-    <TextView
         android:id="@+id/card_price"
-        android:layout_width="199dp"
-        android:layout_height="33dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="12dp"
+        android:layout_width="411dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="8dp"
         android:text="price"
+        android:textColor="@color/Black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/card_artist" />
 
@@ -87,11 +97,13 @@
         android:id="@+id/card_artist"
         android:layout_width="198dp"
         android:layout_height="23dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="8dp"
         android:text="Artist"
+        android:textColor="@color/Black"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/card_mana_cost" />
+        app:layout_constraintTop_toBottomOf="@+id/card_rarity" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
