@@ -50,8 +50,16 @@ public class ExpansionAdapter extends RecyclerView.Adapter<ExpansionAdapter.Expa
         Card currentItem = cardList.get(position);
         holder.textViewCardName.setText(currentItem.getName().getEn());
         holder.textViewCardRarity.setText("Rarity: " + setRarity(currentItem.getRarity()));
-        holder.textViewExpansionCardManaCost.setText("mana: " + currentItem.getManacost());
+        holder.textViewExpansionCardManaCost.setText("mana: " + setMana(currentItem.getManacost()));
         holder.itemView.setTag(currentItem.getFriendlyId());
+    }
+
+    private String setMana(String manacost) {
+        if (manacost == null) {
+            return "none";
+        } else
+            return manacost;
+
     }
 
     @Override
