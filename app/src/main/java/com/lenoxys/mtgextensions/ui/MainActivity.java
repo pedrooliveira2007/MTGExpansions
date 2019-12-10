@@ -18,6 +18,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -34,12 +37,16 @@ import okhttp3.Response;
 public class MainActivity extends AppCompatActivity {
 
     private static String TAG = "MainActivity";
+    private ArrayList<Expansion> allExpansions = new ArrayList<>();
+    Gson gson = new Gson();
+
 
     private RecyclerView recyclerView;
     private AllExpansionsAdapter expansionsAdapter;
     private RecyclerView.LayoutManager layoutManager;
-    private ArrayList<Expansion> allExpansions = new ArrayList<>();
-    Gson gson = new Gson();
+    ProgressBar progressBar;
+    TextView textViewProgressBar;
+
 
     private Callback onAllExpansionsFetchedCallback = new Callback() {
         @Override
@@ -77,6 +84,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setup() {
+
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         setContentView(R.layout.activity_main);
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
@@ -84,6 +94,13 @@ public class MainActivity extends AppCompatActivity {
         expansionsAdapter = new AllExpansionsAdapter(allExpansions);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(expansionsAdapter);
+        setContentView(R.layout.loading_screen);
+        progressBar = findViewById(R.id.progress_bar);
+        textViewProgressBar = findViewById(R.id.text_view_progress_bar);
+        progressBar.setMax(100);
+        progressBar.setScaleY(3f);
+
+        progressAnimation();
         fetchAllExpansions();
     }
     //when the user choose one extension pack
@@ -108,4 +125,11 @@ public class MainActivity extends AppCompatActivity {
         request = new Request.Builder().url(url).build();
         client.newCall(request).enqueue(onAllExpansionsFetchedCallback);
     }
+
+    public void progressAnimation() {
+        ProgressBarAnimation anim = new ProgressBarAnimation(this, progressBar, textViewProgressBar, 0f, 100f);
+        anim.setDuration(8000);
+        progressBar.setAnimation(anim);
+    }
+
 }
