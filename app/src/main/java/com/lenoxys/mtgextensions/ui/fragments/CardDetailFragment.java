@@ -19,6 +19,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 public class CardDetailFragment extends Fragment implements View.OnClickListener {
+
     public static final String TAG = "CardDetailFragment";
     private static final String CARDID = "";
     private Card card;
@@ -50,12 +51,11 @@ public class CardDetailFragment extends Fragment implements View.OnClickListener
         sites.add(price3);
 
         cardName.setText(card.getName().getEn());
-        rarity.setText("rarity: "+ setRarity(card.getRarity()));
+        rarity.setText("rarity: " + setRarity(card.getRarity()));
 
         type.setText(card.getType().getEn());
         Picasso.get().load(card.getImageUrls().get(0).getLarge()).into(cardImage);
         addValues(sites);
-
     }
 
     private String setRarity(String rar) {
@@ -89,7 +89,6 @@ public class CardDetailFragment extends Fragment implements View.OnClickListener
     private void addValues
             (ArrayList<TextView> sites) {
 
-
         if (card.getProviderPrices() != null) {
             for (int i = 0; i < card.getProviderPrices().size(); i++) {
                 if (i >= 3) {
@@ -122,10 +121,7 @@ public class CardDetailFragment extends Fragment implements View.OnClickListener
     }
 
     @Override
-    public void onClick
-            (View
-                     v) {
-
+    public void onClick(View v) {
     }
 
 }

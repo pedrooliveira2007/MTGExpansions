@@ -27,4 +27,7 @@
         app:layout_constraintVertical_bias="1.0">
 
     </androidx.recyclerview.widget.RecyclerView>
+
+    <include layout="@layout/loading_view" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

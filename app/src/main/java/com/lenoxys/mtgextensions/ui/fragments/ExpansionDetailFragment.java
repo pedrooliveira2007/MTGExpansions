@@ -104,6 +104,7 @@ public class ExpansionDetailFragment extends Fragment {
                         }
                     });
                 }
+                getView().findViewById(R.id.loading_container).setVisibility(View.GONE);
             }
         }
     };
@@ -130,9 +131,9 @@ public class ExpansionDetailFragment extends Fragment {
             Card card = new Card();
 
             String cardId = (String) view.getTag();//change the string
-            for (Card c : expansionCards) {
-                if (c.getFriendlyId().equals(cardId)) {
-                    card = c;
+            for (Card card1 : expansionCards) {
+                if (card1.getFriendlyId().equals(cardId)) {
+                    card = card1;
                     break;
                 }
             }
