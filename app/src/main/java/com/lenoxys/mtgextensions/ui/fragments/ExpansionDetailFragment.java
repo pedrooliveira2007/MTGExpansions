@@ -100,11 +100,12 @@ public class ExpansionDetailFragment extends Fragment {
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
+                            
                             populateCardList();
+                            getView().findViewById(R.id.loading_container).setVisibility(View.GONE);
                         }
                     });
                 }
-                getView().findViewById(R.id.loading_container).setVisibility(View.GONE);
             }
         }
     };
